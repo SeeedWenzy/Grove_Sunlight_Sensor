@@ -158,7 +158,7 @@ bool Si115X::Begin(void){
     uint8_t conf[4];
 
 
-#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328__)
+#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega4809__)
 
     conf[0] = 0B00000000;
     conf[1] = 0B00000010, 
@@ -174,7 +174,7 @@ bool Si115X::Begin(void){
 
 #endif
 
-#if defined(TARGET_RP2040)
+#if defined(TARGET_RP2040) || defined(NRF52840_XXAA)
 
     conf[0] = 0B00000000;
     conf[1] = 0B00000010,
@@ -194,7 +194,7 @@ bool Si115X::Begin(void){
 
 }
 
-#if defined(TARGET_RP2040)
+#if defined(TARGET_RP2040) || defined(NRF52840_XXAA)
 
 uint16_t Si115X::ReadHalfWord(void) {
     Si115X::send_command(Si115X::FORCE);
@@ -223,7 +223,7 @@ uint16_t Si115X::ReadHalfWord_VISIBLE(void) {
 
 #endif
 
-#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328__)
+#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328__) || defined(__SAMD51__) || defined(__AVR_ATmega4809__)
 
 uint16_t Si115X::ReadHalfWord(void) {
     Si115X::send_command(Si115X::FORCE);
